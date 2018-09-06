@@ -11,18 +11,19 @@ public class MobilePhoneSet
 	
 	public void Insert(MobilePhone mobile)
 	{
-		mobileSet.Insert(mobile);
+		try { mobileSet.Insert(mobile); }
+		catch(RuntimeException ex)
+		{
+			throw new RuntimeException("Error - Mobile phone with identifier " + mobile.number() + " is already present in this resident set");
+		}
 	}
 	
 	public void Delete(MobilePhone mobile)
 	{
-		try
-		{
-			mobileSet.Delete(mobile);
-		}
+		try { mobileSet.Delete(mobile); }
 		catch(RuntimeException e)
 		{
-			throw e;
+			throw new RuntimeException("Error - Mobile phone with identifier " + mobile.number() + " is not present in this resident set");
 		}
 	}
 	

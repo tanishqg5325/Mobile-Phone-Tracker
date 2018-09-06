@@ -33,7 +33,7 @@ public class Myset
 	
 	public void Insert(Object o)
 	{
-		if(IsMember(o)) return;
+		if(IsMember(o)) throw new RuntimeException("Error - Object is already in the set");
 		Node tmp = new Node(o);
 		if(head==null)
 		{
@@ -77,7 +77,8 @@ public class Myset
 		temp = a.head;
 		while(temp != null)
 		{
-			if(!union.IsMember(temp.obj)) union.Insert(temp.obj);
+			try { union.Insert(temp.obj); }
+			catch(RuntimeException ex) {}
 			temp = temp.next;
 		}
 		return union;
@@ -119,21 +120,4 @@ public class Myset
 		}
 		return objs;
 	}
-
-	/*public static void main(String[] args)
-	{
-		Myset a = new Myset();
-		System.out.println(a.IsEmpty());
-		a.Insert(1529); a.Insert(99); a.Insert(455); a.Insert(99);
-		System.out.println(a.IsEmpty());
-		System.out.println(a.size());
-		System.out.println(a.IsMember(455));
-		System.out.println(a.getItems()[1]);
-		//a.Delete(15);
-		System.out.println(a.getItems()[1]);
-		Myset b = new Myset(); //b.Insert(99); b.Insert(656); b.Insert(34); b.Insert(1529);
-		Myset c = b.Union(a);
-		c = b.Intersection(a);
-		System.out.println(c.size());
-	}*/
 }

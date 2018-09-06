@@ -70,7 +70,7 @@ public class ExchangeList
 			}
 			temp = temp.next;
 		}
-		throw new RuntimeException("Error - Exchange " + e.id + " is not present in list");
+		throw new RuntimeException("Error - Exchange with identifier " + e.id + " is not present in the list");
 	}
 	
 	public int size()

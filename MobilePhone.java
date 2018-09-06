@@ -43,6 +43,6 @@ public class MobilePhone
 	public Exchange location()
 	{
 		if(status) return exchange;
-		throw new RuntimeException("Error - Mobilephone " + number() + " is switched off");
+		throw new RuntimeException("Error - Mobile phone with identifier " + number() + " is currently switched off");
 	}
 }
